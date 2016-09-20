@@ -38,7 +38,7 @@ myBilling = Invoice 1
 -- Pattern Matching
 sumList :: (Num a) => [a] -> a
 sumList (x:xs) = x + sumList(xs)
-sumList [] = 0
+sumList []     = 0
 
 -- Record syntax
 data Customer = Customer {
@@ -67,12 +67,53 @@ myList = Cons 1 (Cons 2 Nil)
 
 fromList :: [a] -> List a
 fromList (x:xs) = Cons x (fromList xs)
-fromList [] = Nil
+fromList []     = Nil
 
 fromList' :: List a -> [a]
 fromList' (Cons x xs) = x : (fromList' xs)
-fromList' Nil = []
+fromList' Nil         = []
 
 data Tree a = Node a (Maybe (Tree a)) (Maybe (Tree a)) deriving Show
 myTree :: Tree Int
 myTree = Node 1 (Just(Node 2 (Nothing) (Nothing))) (Nothing)
+
+-- Let-If block declare local variables
+lend :: (Num a, Ord a) => a -> a -> Maybe a
+lend amount balance = let reserve = 100
+                          newBalance = balance - amount
+                      in if balance < reserve
+                          then Nothing
+                          else Just newBalance
+
+-- where clause local variables
+lend2 :: (Num a, Ord a) => a -> a -> Maybe a
+lend2 amount balance = if balance < reserve
+                          then Nothing
+                          else Just newBalance
+                       where
+                          reserve = 100
+                          newBalance = balance - amount
+
+-- where caluse define local functions
+pluralise :: String -> [Int] -> [String]
+pluralise word counts = map plural counts
+  where plural 0 = "no " ++ word ++ "s"
+        plural 1 = "one " ++ word
+        plural n = show n ++ " " ++ word ++ "s"
+
+
+-- case expression
+fromMaybe :: a -> Maybe a -> a
+fromMaybe defval wrapped =
+  case wrapped of
+    Nothing    -> defval
+    Just value -> value
+
+-- guards
+lend3 :: (Num a, Ord a) => a -> a -> Maybe a
+lend3 amount balance
+  | amount <= 0 = Nothing
+  | amount > reserve = Nothing
+  | otherwise = Just newBalance
+  where reserve = 100
+        newBalance = balance - amount
