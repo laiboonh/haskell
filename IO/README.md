@@ -1,7 +1,7 @@
 # IO
 
 ## Points to note
-1. To compile haskell file `ghc hellowworld`
+1. To compile haskell file `ghc helloworld`
 2. *main* has type of the last action in do block
 3. <- is to take value out of IO action (helloworld0.hs)
 4. *return* makes an IO action out of some value (helloworld1.hs)
