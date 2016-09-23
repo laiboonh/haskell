@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 
-import Data.List
+import           Data.List
 
 count :: [a] -> Integer
 count (_:xs) = 1 + count xs
@@ -10,12 +10,12 @@ count' :: Integer -> [a] -> Integer
 count' acc (_:xs) = count' (acc + 1) xs
 count' acc []     = acc
 
-sumList :: (Fractional a) => [a] -> a
-sumList [] = 0
+sumList :: (Num t) => [t] -> t
+sumList []     = 0
 sumList (x:xs) = x + (sumList xs)
 
-lengthList :: (Fractional a) => [t] -> a
-lengthList [] = 0
+lengthList :: (Num a) => [t] -> a
+lengthList []     = 0
 lengthList (_:xs) = 1 + (lengthList xs)
 
 meanList :: (Fractional a) => [a] -> a
@@ -23,7 +23,7 @@ meanList xs = (sumList xs) / (lengthList xs)
 
 reverseList :: [a] -> [a]
 reverseList (x:xs) = (reverseList xs) ++ [x]
-reverseList [] = []
+reverseList []     = []
 
 createPalin :: [a] -> [a]
 createPalin [] = []
@@ -47,6 +47,18 @@ compareByLength xs ys
     lengthys = length ys
 
 intersperse' :: a -> [[a]] -> [a]
-intersperse' _ [] = []
-intersperse' _ (x:[]) = x
+intersperse' _ []       = []
+intersperse' _ (x:[])   = x
 intersperse' sep (x:xs) = x ++ [sep] ++ intersperse' sep xs
+
+data Tree a = Node a (Tree a) (Tree a)
+            | Empty
+              deriving (Show)
+
+treeHeight :: Tree a -> Int
+treeHeight Empty            = 0
+treeHeight (Node _ (l) (r)) = 1 + (max (treeHeight l) (treeHeight r))
+
+simpleTree :: Tree [Char]
+simpleTree = Node "parent" (Node "left child" Empty Empty)
+                           (Node "right child" Empty Empty)
