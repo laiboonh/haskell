@@ -14,12 +14,12 @@ sumList :: (Num t) => [t] -> t
 sumList []     = 0
 sumList (x:xs) = x + (sumList xs)
 
-lengthList :: (Num a) => [t] -> a
+lengthList :: [a] -> Int
 lengthList []     = 0
 lengthList (_:xs) = 1 + (lengthList xs)
 
 meanList :: (Fractional a) => [a] -> a
-meanList xs = (sumList xs) / (lengthList xs)
+meanList xs = (sumList xs) / fromIntegral(lengthList xs)
 
 reverseList :: [a] -> [a]
 reverseList (x:xs) = (reverseList xs) ++ [x]
@@ -43,8 +43,8 @@ compareByLength xs ys
   | lengthxs < lengthys = LT
   | otherwise = EQ
   where
-    lengthxs = length xs
-    lengthys = length ys
+    lengthxs = lengthList xs
+    lengthys = lengthList ys
 
 intersperse' :: a -> [[a]] -> [a]
 intersperse' _ []       = []
