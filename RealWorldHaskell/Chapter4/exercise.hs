@@ -34,6 +34,10 @@ splitWith p (x:xs) = if p x
   else
     splitWith p xs
 
+transpose :: String -> String
+transpose xs = unlines (map (\(x,y) -> [x,y]) (zip (ls!!0) (ls!!1)))
+  where ls = lines xs
+
 splitLines :: String -> [String]
 splitLines [] = []
 splitLines cs =
