@@ -1,13 +1,13 @@
 # Pattern Matching
 
-## as
+### as
 ```haskell
 firstLetter :: String -> String
 firstLetter "" = "Empty String"
 firstLetter str@(x:_) = "The first letter of " ++ str ++ " is " ++ [x]
 ```
 
-## guards
+### guards
 ```haskell
 bmiTell :: (RealFloat a) => a -> a -> String  
 bmiTell weight height  
@@ -17,7 +17,7 @@ bmiTell weight height
     | otherwise                 = "You're a whale, congratulations!"  
 ```
 
-## where bindings
+### where bindings
 ```haskell
 bmiTell :: (RealFloat a) => a -> a -> String  
 bmiTell weight height  
@@ -28,7 +28,7 @@ bmiTell weight height
     where bmi = weight / height ^ 2
 ```
 
-## let expressions
+### let expressions (expressions returna value bindings do not)
 ```haskell
 cylinder :: (RealFloat a) => a -> a -> a  
 cylinder r h =
@@ -37,7 +37,7 @@ cylinder r h =
     in  sideArea + 2 * topArea
 ```
 
-## case expressions
+### case expressions
 ```haskell
 describeList :: [a] -> String  
 describeList xs = "The list is " ++ case xs of [] -> "empty."  
