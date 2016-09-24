@@ -16,7 +16,8 @@ main = do
   putStrLn ("Hey " ++ name ++ ", how are you?")
 ```
 
-#### *return* makes an IO action out of some value
+*return* makes an IO action out of some value
+
 ```haskell
 main :: IO ()
 main = do
@@ -29,8 +30,10 @@ main = do
       putStrLn ("Hey " ++ name ++ ", how are you?")
 ```
 
-#### You can use *let* in *do* block
-#### return **does not** cause IO *do* block to end in execution
+You can use *let* in *do* block
+
+return **does not** cause IO *do* block to end in execution
+
 ```haskell
 main :: IO ()
 main = do
