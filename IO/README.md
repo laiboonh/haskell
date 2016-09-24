@@ -1,9 +1,9 @@
 # IO
 
-#### To compile haskell file `stack ghc helloworld`
-#### *main* has type of the last action in do block
-#### <- is to take value out of IO action
-#### Last action in a *do* block cannot be bound to a name, it has to be an action
+To compile haskell file `stack ghc helloworld`
+*main* has type of the last action in do block
+<- is to take value out of IO action
+Last action in a *do* block cannot be bound to a name, it has to be an action
 ```haskell
 main :: IO ()
 main = do
@@ -12,7 +12,7 @@ main = do
   putStrLn ("Hey " ++ name ++ ", how are you?")
 ```
 
-#### *return* makes an IO action out of some value (helloworld1.hs)
+#### *return* makes an IO action out of some value
 ```haskell
 main :: IO ()
 main = do
