@@ -1,9 +1,13 @@
 # IO
 
 To compile haskell file `stack ghc helloworld`
+
 *main* has type of the last action in do block
+
 <- is to take value out of IO action
+
 Last action in a *do* block cannot be bound to a name, it has to be an action
+
 ```haskell
 main :: IO ()
 main = do
