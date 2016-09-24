@@ -28,7 +28,7 @@ bmiTell weight height
     where bmi = weight / height ^ 2
 ```
 
-### let expressions (expressions returna value bindings do not)
+### let expressions (expressions return a value bindings do not)
 ```haskell
 cylinder :: (RealFloat a) => a -> a -> a  
 cylinder r h =
