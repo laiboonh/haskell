@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 
-import           Data.List
+import           Data.List (sortBy)
 
 count :: [a] -> Integer
 count (_:xs) = 1 + count xs
@@ -46,10 +46,10 @@ compareByLength xs ys
     lengthxs = lengthList xs
     lengthys = lengthList ys
 
-intersperse' :: a -> [[a]] -> [a]
-intersperse' _ []       = []
-intersperse' _ (x:[])   = x
-intersperse' sep (x:xs) = x ++ [sep] ++ intersperse' sep xs
+intersperse :: a -> [[a]] -> [a]
+intersperse _ []       = []
+intersperse _ (x:[])   = x
+intersperse sep (x:xs) = x ++ [sep] ++ intersperse sep xs
 
 data Tree a = Node a (Tree a) (Tree a)
             | Empty
