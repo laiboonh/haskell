@@ -1,5 +1,7 @@
 {-# OPTIONS_GHC -Wall #-}
 
+import           Data.Char (digitToInt,ord)
+
 safeHead :: [a] -> Maybe a
 safeHead []    = Nothing
 safeHead (x:_) = Just x
@@ -50,3 +52,7 @@ splitLines cs =
 
 isLineTerminator :: Char -> Bool
 isLineTerminator c = c == '\r' || c == '\n'
+
+asInt_fold :: [Char] -> Int
+asInt_fold ('-':xs) = negate (asInt_fold xs)
+asInt_fold xs = foldl (\a b -> (a*10) + (digitToInt b)) 0 xs
