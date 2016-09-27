@@ -33,7 +33,7 @@ id :: a -> a
 ```haskell
 negate :: Num a => a -> a
 ```
-### Concrete type (can make use of common methods of Num as well as Fractional)
+#### Concrete type (can make use of common methods of Num as well as Fractional)
 ```haskell
 λ> let a = 1.0::Double
 a :: Double
