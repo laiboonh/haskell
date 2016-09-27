@@ -22,3 +22,19 @@ data Maybe a = Nothing | Just a
 λ> :t x
 x :: Int
 ```
+
+# Polymorphism
+
+#### Parametric polymorphism (maximum polymorphism a can be anything)
+```haskell
+id :: a -> a
+```
+#### Constrained polymorphism (potential type of a is reduced however there are common functions of Num that can be used now)
+```haskell
+negate :: Num a => a -> a
+```
+### Concrete type (can make use of common methods of Num as well as Fractional)
+```haskell
+λ> let a = 1.0::Double
+a :: Double
+```
