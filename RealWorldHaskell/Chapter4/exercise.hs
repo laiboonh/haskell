@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 
-import           Data.Char (digitToInt,ord)
+import           Data.Char (digitToInt)
 
 safeHead :: [a] -> Maybe a
 safeHead []    = Nothing
@@ -55,4 +55,14 @@ isLineTerminator c = c == '\r' || c == '\n'
 
 asInt_fold :: [Char] -> Int
 asInt_fold ('-':xs) = negate (asInt_fold xs)
-asInt_fold xs = foldl (\a b -> (a*10) + (digitToInt b)) 0 xs
+asInt_fold xs       = foldl (\a b -> (a*10) + (digitToInt b)) 0 xs
+
+concat' :: [[a]] -> [a]
+concat' [] = []
+concat' xs = foldr step [] xs
+  where step x acc = x ++ acc
+
+takeWhile' :: (a -> Bool) -> [a] -> [a]
+takeWhile' _ [] = []
+takeWhile' p xs = foldr step [] xs
+  where step x acc = if (p x) then [x] ++ acc else []
