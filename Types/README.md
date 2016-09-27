@@ -23,7 +23,7 @@ data Maybe a = Nothing | Just a
 x :: Int
 ```
 
-# Polymorphism
+# 3 kinds of type signatures
 
 #### Parametric polymorphism (maximum polymorphism a can be anything)
 ```haskell
