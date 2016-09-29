@@ -1,6 +1,19 @@
 # IO
 
-To compile haskell file `stack ghc helloworld`
+#### *"You can see IO String as a means of producing a String which causes side effect"*
+
+#### () is an empty tuple or *unit*. Unit is a value and also a type that means nothing
+```haskell
+λ: :i ()
+data () = ()    -- Defined in ‘GHC.Tuple’
+instance Bounded () -- Defined in ‘GHC.Enum’
+instance Enum () -- Defined in ‘GHC.Enum’
+instance Eq () -- Defined in ‘GHC.Classes’
+instance Ord () -- Defined in ‘GHC.Classes’
+instance Read () -- Defined in ‘GHC.Read’
+instance Show () -- Defined in ‘GHC.Show’
+instance Monoid () -- Defined in ‘GHC.Base’
+```
 
 *main* has type of the last action in do block
 
@@ -45,19 +58,4 @@ main = do
     else do
       let bigName = map toUpper name
       putStrLn ("Hey " ++ bigName ++ "! how are you?")
-```
-
-#### *"You can see IO String as a means of producing a String which causes side effect"*
-
-#### () is an empty tuple or *unit*. Unit is a value and also a type that means nothing
-```haskell
-λ: :i ()
-data () = ()    -- Defined in ‘GHC.Tuple’
-instance Bounded () -- Defined in ‘GHC.Enum’
-instance Enum () -- Defined in ‘GHC.Enum’
-instance Eq () -- Defined in ‘GHC.Classes’
-instance Ord () -- Defined in ‘GHC.Classes’
-instance Read () -- Defined in ‘GHC.Read’
-instance Show () -- Defined in ‘GHC.Show’
-instance Monoid () -- Defined in ‘GHC.Base’
 ```

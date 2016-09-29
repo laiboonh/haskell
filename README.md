@@ -18,11 +18,13 @@
 6. To find out type `:t (++)`
 
 ### Customize GHCI
-1. Edit appropriate ghci.conf file. In Windows :  C:\Users\lbh\AppData\Roaming\ghc\ghci.conf
-ck k
+Edit appropriate ghci.conf file. In Windows :  C:\Users\lbh\AppData\Roaming\ghc\ghci.conf
 #### Here we set ghci to accept multiline input, change the prompt and to show type for return value
 ```
 :set +m
 :set prompt "\x03BB: "
 :set +t
 ```
+### Compiling haskell code
+`stack ghc helloworld`
+Run helloworld.exe
