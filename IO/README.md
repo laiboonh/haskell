@@ -47,7 +47,7 @@ main = do
       putStrLn ("Hey " ++ bigName ++ "! how are you?")
 ```
 
-#### *"You can see IO String as a means of producing a String" which causes side effect*
+#### *"You can see IO String as a means of producing a String which causes side effect"*
 
 #### () is an empty tuple or *unit*. Unit is a value and also a type that means nothing
 ```haskell
