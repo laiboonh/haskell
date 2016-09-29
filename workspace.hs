@@ -9,6 +9,7 @@ sameLength (x:xs) = foldl step True xs
     step acc e = acc && (length e == headLen)
 
 
-main :: IO String
-main = do
-  return "hi"
+data Mood = Blah | Yay
+instance Show Mood where
+  show Blah = "1"
+  show Yay  = "2"

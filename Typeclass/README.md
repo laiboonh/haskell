@@ -30,3 +30,28 @@ class Foo a where
 class (Foo a) => Baz a where
   bar :: a -> String
 ```
+
+#### Declaring a type and implementing a typeclass
+```haskell
+λ> :i Show
+class Show a where
+  showsPrec :: Int -> a -> ShowS
+  show :: a -> String
+  showList :: [a] -> ShowS  
+instance Show a => Show [a] -- Defined in ‘GHC.Show’
+instance Show Word -- Defined in ‘GHC.Show’
+
+--workspace.hs
+data Mood = Blah | Yay
+instance Show Mood where
+  show Blah = "1"
+  show Yay  = "2"
+
+λ> :l workspace.hs
+λ> Yay
+2
+it :: Mood
+λ> Blah
+1
+it :: Mood  
+```
