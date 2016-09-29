@@ -7,3 +7,8 @@ sameLength (x:xs) = foldl step True xs
   where
     headLen = length x
     step acc e = acc && (length e == headLen)
+
+
+main :: IO String
+main = do
+  return "hi"
