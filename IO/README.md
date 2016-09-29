@@ -4,7 +4,7 @@
 
 #### () is an empty tuple or *unit*. Unit is a value and also a type that means nothing
 ```haskell
-λ: :i ()
+λ> :i ()
 data () = ()    -- Defined in ‘GHC.Tuple’
 instance Bounded () -- Defined in ‘GHC.Enum’
 instance Enum () -- Defined in ‘GHC.Enum’

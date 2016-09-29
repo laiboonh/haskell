@@ -1,5 +1,11 @@
 # Types
 
+#### type synonym. String is synonym for [Char]
+```haskell
+λ> :i String
+type String = [Char]    -- Defined in ‘GHC.Base’
+```
+
 #### type constructor can be values of a particular type
 ````haskell
 data Bool = False | True
