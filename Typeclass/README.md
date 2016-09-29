@@ -1,5 +1,5 @@
 # Typeclasses
-#### "typeclasses allows us to generalize over a set of types in order to define and execute a standard set of features for those types"
+### "typeclasses allows us to generalize over a set of types in order to define and execute a standard set of features for those types"
 
 #### data declaration and the typeclasses it implements
 ```haskell
