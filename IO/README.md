@@ -47,7 +47,17 @@ main = do
       putStrLn ("Hey " ++ bigName ++ "! how are you?")
 ```
 
-## Glossary
-1. action : Something when performed will have a side effect
-2. unit : empty tuple ()
-3. IO () : IO action with a **result type** of unit
+#### *"You can see IO String as a means of producing a String" which causes side effect*
+
+#### () is an empty tuple or *unit*. Unit is a value and also a type that means nothing
+```haskell
+λ: :i ()
+data () = ()    -- Defined in ‘GHC.Tuple’
+instance Bounded () -- Defined in ‘GHC.Enum’
+instance Enum () -- Defined in ‘GHC.Enum’
+instance Eq () -- Defined in ‘GHC.Classes’
+instance Ord () -- Defined in ‘GHC.Classes’
+instance Read () -- Defined in ‘GHC.Read’
+instance Show () -- Defined in ‘GHC.Show’
+instance Monoid () -- Defined in ‘GHC.Base’
+```
