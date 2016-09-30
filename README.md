@@ -18,13 +18,24 @@
 6. To find out type `:t (++)`
 
 ### Customize GHCI
-Edit appropriate ghci.conf file. In Windows :  C:\Users\lbh\AppData\Roaming\ghc\ghci.conf
-#### Here we set ghci to accept multiline input, change the prompt and to show type for return value
+1. Edit appropriate ghci.conf file. In Windows :  C:\Users\lbh\AppData\Roaming\ghc\ghci.conf
+#### Here we set ghci to accept multiline input, change the prompt, show type after evaluation and set macro
 ```
 :set +m
-:set prompt "\x03BB: "
+:set prompt "\x03BB> "
 :set +t
+:def pwd (\_-> System.Directory.getCurrentDirectory >>= print >> return "")
+```
+
+### Changing directory within GHCI
+```haskell
+--because of macro set in earlier step
+λ> :pwd
+"C:\\Users\\lbh"
+λ> :cd haskell\\
+λ> :pwd
+"C:\\Users\\lbh\\haskell"
 ```
 ### Compiling haskell code
-`stack ghc helloworld`
-Run helloworld.exe
+1. `stack ghc helloworld`
+2. Run helloworld.exe
