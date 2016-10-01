@@ -43,13 +43,13 @@ class Show a where
         -- Defined in ‘GHC.Show’
 
 --workspace.hs
-data Mood = Blah | Yay
+data Mood = Blah | Woot
 instance Show Mood where
   show Blah = "1"
-  show Yay  = "2"
+  show Woot  = "2"
 
 λ> :l workspace.hs
-λ> Yay
+λ> Woot
 2
 it :: Mood
 λ> Blah
@@ -89,4 +89,17 @@ data Identity a = Identity' a
 instance Eq a => Eq (Identity a) where
   (==) (Identity' v) (Identity' v') =
     v == v'
+```
+
+#### Eq is a superclass of Ord, Ord is a subclass of Eq
+```haskell
+class Eq a => Ord a where
+  compare :: a -> a -> Ordering
+  (<) :: a -> a -> Bool
+  (<=) :: a -> a -> Bool
+  (>) :: a -> a -> Bool
+  (>=) :: a -> a -> Bool
+  max :: a -> a -> a
+  min :: a -> a -> a
+  {-# MINIMAL compare | (<=) #-}
 ```
