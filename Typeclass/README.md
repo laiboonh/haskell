@@ -32,14 +32,15 @@ class (Foo a) => Baz a where
 ```
 
 #### Declaring a type and implementing a typeclass
+#### info shows that in order to implement Show one has to minimally implement showsPrec or show method
 ```haskell
 λ> :i Show
 class Show a where
   showsPrec :: Int -> a -> ShowS
   show :: a -> String
-  showList :: [a] -> ShowS  
-instance Show a => Show [a] -- Defined in ‘GHC.Show’
-instance Show Word -- Defined in ‘GHC.Show’
+  showList :: [a] -> ShowS
+  {-# MINIMAL showsPrec | show #-}
+        -- Defined in ‘GHC.Show’
 
 --workspace.hs
 data Mood = Blah | Yay
@@ -54,4 +55,38 @@ it :: Mood
 λ> Blah
 1
 it :: Mood  
+```
+
+#### Default implementation
+```haskell
+λ> data Mood = Mood' deriving Show
+```
+
+#### Implement typeclasses for value constructors without type variables
+```haskell
+data DayOfWeek = Mon | Tue | Wed | Thu | Fri | Sat | Sun
+instance Eq DayOfWeek where
+  (==) Mon Mon = True
+  (==) Tue Tue = True
+  (==) Wed Wed = True
+  (==) Thu Thu = True
+  (==) Fri Fri = True
+  (==) Sat Sat = True
+  (==) Sun Sun = True
+  (==) _ _     = False
+```
+#### Implement typeclasses for value constructors with type variables
+```haskell
+data Date = Date' DayOfWeek Int
+instance Eq Date where
+  (==) (Date' dayOfWeek dayOfMonth) (Date' dayOfWeek' dayOfMonth') =
+    dayOfWeek == dayOfWeek' && dayOfMonth == dayOfMonth'
+```
+
+#### What if the constructors type variables may or may not implement Eq
+```haskell
+data Identity a = Identity' a
+instance Eq a => Eq (Identity a) where
+  (==) (Identity' v) (Identity' v') =
+    v == v'
 ```
