@@ -1,4 +1,5 @@
 # Function
+### "Functions are applied to their arguments, and arguments are passed to functions and then evaluated to produce the output"
 
 ###Function Composition
 
