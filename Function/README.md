@@ -26,7 +26,7 @@ numberOfWords :: String -> Int
 (.) :: (b -> c) -> (a -> b) -> a -> c   -- Defined in ‘GHC.Base’
 infixr 9 .
 ```
-#### `negate . sum [1,2,3]` will become `negate . 6` which won't compile because . expects 2 function arguments
+#### `negate . sum [1,2,3]` will become `negate . 6` which won't compile because (.) expects 2 function arguments
 #### Hence we use $
 ```haskell
 λ> :i $
