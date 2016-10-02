@@ -34,3 +34,13 @@ bindExp x = let x = 10; y = 5 in
   "the integer was: " ++ show x
   ++ " and y was: " ++ show y
 ```
+
+#### Case expressions. Expression means it returns an output.
+```haskell
+num :: (Ord a, Num a) => a -> a
+num x =
+  case compare x 0 of
+    LT -> -1
+    GT -> 1
+    _ -> 0
+```
