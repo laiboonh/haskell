@@ -16,6 +16,13 @@
 4. To reload `:r`
 5. To find out more info `:i (++)`
 6. To find out type `:t (++)`
+7. To key in a block of codes `:{ :}`
+```haskell
+λ> :{
+Prelude| k (x,y) = x
+Prelude| :}
+k :: (t, t1) -> t
+```
 
 ### Customize GHCI
 1. Edit appropriate ghci.conf file. In Windows :  C:\Users\lbh\AppData\Roaming\ghc\ghci.conf

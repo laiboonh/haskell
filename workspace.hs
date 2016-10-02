@@ -7,3 +7,6 @@ sameLength (x:xs) = foldl step True xs
   where
     headLen = length x
     step acc e = acc && (length e == headLen)
+
+f :: (a,b,c) -> (d,e,f) -> ((a,d),(c,f))
+f (a',_,c') (d',_,f') = ((a',d'),(c',f'))
