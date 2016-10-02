@@ -10,3 +10,12 @@ sameLength (x:xs) = foldl step True xs
 
 f :: (a,b,c) -> (d,e,f) -> ((a,d),(c,f))
 f (a',_,c') (d',_,f') = ((a',d'),(c',f'))
+
+dodgy :: Num a => a -> a -> a
+dodgy x y = x + y * 10
+
+oneIsOne :: Num a => a -> a
+oneIsOne = dodgy 1
+
+oneIsTwo :: Num a => a -> a
+oneIsTwo = (flip dodgy) 2

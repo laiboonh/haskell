@@ -35,7 +35,7 @@ bindExp x = let x = 10; y = 5 in
   ++ " and y was: " ++ show y
 ```
 
-#### Case expressions. Expression means it returns an output.
+#### Case expression. Expression means it returns an output.
 ```haskell
 num :: (Ord a, Num a) => a -> a
 num x =
@@ -43,4 +43,12 @@ num x =
     LT -> -1
     GT -> 1
     _ -> 0
+```
+
+#### Guard block
+```haskell
+pal :: (Eq a) => [a] -> Bool
+pal xs
+  | xs == reverse xs = True
+  | otherwise = False
 ```
