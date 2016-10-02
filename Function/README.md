@@ -16,6 +16,29 @@ numberOfWords :: String -> Int
 λ> numberOfWords "hello world"
 2
 ```
+#### This won't compile because it of precedence
+```haskell
+λ> negate . sum [1,2,3]
+```
+#### Function application precedence is 10, function composition precendence is 9
+```haskell
+λ> :i .
+(.) :: (b -> c) -> (a -> b) -> a -> c   -- Defined in ‘GHC.Base’
+infixr 9 .
+```
+#### `negate . sum [1,2,3]` will become `negate . 6` which won't compile because . expects 2 function arguments
+#### Hence we use $
+```haskell
+λ> :i $
+($) ::
+  forall (r :: GHC.Types.RuntimeRep) a (b :: TYPE r).
+  (a -> b) -> a -> b
+        -- Defined in ‘GHC.Base’
+infixr 0 $
+λ> negate . sum $ [1,2,3]
+-6
+it :: Num c => c
+```
 
 #### *let* variables are only in scope inside the *let* expression. The following won't compile
 ```haskell
