@@ -56,3 +56,24 @@ tenDigit x = m
 
 g :: (a->b) -> (a,c) -> (b,c)
 g f (a,c) = (f a,c)
+
+roundTrip :: (Show a, Read b) => a -> b
+roundTrip a = read . show $ a
+
+cattyConny :: String -> String -> String
+cattyConny x y = x ++ " mrow " ++ y
+
+flippy :: String -> String -> String
+flippy = flip cattyConny
+
+appedCatty :: String -> String
+appedCatty = cattyConny "woops"
+
+frappe :: String -> String
+frappe = flippy "haha"
+
+mySum :: (Eq a, Num a) => a -> a
+mySum x = go x 0
+  where go :: (Eq a, Num a) => a -> a -> a
+        go 0 b = b
+        go a b = go (a-1) b+a
