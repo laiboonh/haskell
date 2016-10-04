@@ -87,3 +87,8 @@ myMul x y = go x y 0
           | x' > 0 && y' < 0 = go x' (y' + 1) (acc - x')
           | x' < 0 && y' > 0 = go x' (y' - 1) (acc + x')
           | otherwise = acc
+
+mc91 :: (Ord a, Num a) => a -> a
+mc91 x
+  | x > 100 = x -10
+  | otherwise = 91
