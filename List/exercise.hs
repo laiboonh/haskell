@@ -17,3 +17,18 @@ go x' y' acc
   | x' > y' = acc
   | x' == y' = acc ++ [x']
   | otherwise = go (succ x') y' (acc ++ [x'])
+
+myWords :: String -> [String]
+myWords x = go' x []
+  where go' :: String -> [String] -> [String]
+        go' [] acc = acc
+        go' x' acc = go' ( dropWhileSpace (dropWhileNotSpace x')) (acc ++ [takeWhileNotSpace x'])
+
+dropWhileSpace :: (String -> String)
+dropWhileSpace = dropWhile (\x -> x == ' ')
+
+dropWhileNotSpace :: (String -> String)
+dropWhileNotSpace = dropWhile (\x -> x /= ' ')
+
+takeWhileNotSpace :: (String -> String)
+takeWhileNotSpace = takeWhile (\x -> x /= ' ')

@@ -25,7 +25,9 @@ k :: (t, t1) -> t
 ```
 
 ### Customize GHCI
-1. Edit appropriate ghci.conf file. In Windows :  C:\Users\lbh\AppData\Roaming\ghc\ghci.conf
+1. Edit appropriate ghci.conf file.
+In Windows :  C:\Users\lbh\AppData\Roaming\ghc\ghci.conf
+In Mac : /Users/lbh/.ghc/ghci.conf
 ####
 1. Set ghci to accept multiline input
 2. Change the prompt
