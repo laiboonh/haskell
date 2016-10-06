@@ -32,3 +32,11 @@ dropWhileNotSpace = dropWhile (\x -> x /= ' ')
 
 takeWhileNotSpace :: (String -> String)
 takeWhileNotSpace = takeWhile (\x -> x /= ' ')
+
+mystery :: String -> [Bool]
+mystery xs = map (\x-> elem x "aeiou") xs
+
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y) : zip' xs ys
