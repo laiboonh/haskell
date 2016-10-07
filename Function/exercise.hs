@@ -75,5 +75,20 @@ frappe = flippy "haha"
 mySum :: (Eq a, Num a) => a -> a
 mySum x = go x 0
   where go :: (Eq a, Num a) => a -> a -> a
-        go 0 b = b
-        go a b = go (a-1) b+a
+        go 0 acc = acc
+        go x' acc = go (x' - 1) acc + x'
+
+myMul :: (Integral a) => a -> a -> a
+myMul x y = go x y 0
+  where go :: (Integral a) => a -> a -> a -> a
+        go x' y' acc
+          | x' > 0 && y' > 0 = go x' (y' - 1) (acc + x')
+          | x' < 0 && y' < 0 = go (-x') (-y') (acc)
+          | x' > 0 && y' < 0 = go x' (y' + 1) (acc - x')
+          | x' < 0 && y' > 0 = go x' (y' - 1) (acc + x')
+          | otherwise = acc
+
+mc91 :: (Ord a, Num a) => a -> a
+mc91 x
+  | x > 100 = x -10
+  | otherwise = 91
