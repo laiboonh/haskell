@@ -56,5 +56,6 @@ In Mac : /Users/lbh/.ghc/ghci.conf
 "C:\\Users\\lbh\\haskell"
 ```
 ### Compiling haskell code
-1. `stack ghc helloworld`
+1. `stack ghc -- helloworld.hs -c`
 2. Run helloworld.exe
+3. If your source file has dependencies on other object files they will be linked automatically assuming they are in the same directory
