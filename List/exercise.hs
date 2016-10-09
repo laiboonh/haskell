@@ -1,5 +1,7 @@
 {-# OPTIONS_GHC -Wall #-}
+
 import Data.Char (toUpper)
+
 eftChar :: Char -> Char -> [Char]
 eftChar x y = go x y []
 
@@ -59,4 +61,4 @@ echo (c:cs) = toUpper c : echo cs
 
 firstLetter :: String -> Maybe Char
 firstLetter "" = Nothing
-firstLetter (c:_) = Just . toUpper c
+firstLetter (c:_) = Just $ toUpper c
