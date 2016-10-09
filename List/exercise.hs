@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -Wall #-}
-
+import Data.Char (toUpper)
 eftChar :: Char -> Char -> [Char]
 eftChar x y = go x y []
 
@@ -48,3 +48,15 @@ zipWith' f (x:xs) (y:ys) = (f x y) : zipWith' f xs ys
 
 zip'' :: [a] -> [b] -> [(a,b)]
 zip'' xs ys = zipWith' (,) xs ys
+
+capitalise :: String -> String
+capitalise "" = ""
+capitalise (c:cs) = toUpper c : cs
+
+echo :: String -> String
+echo "" = ""
+echo (c:cs) = toUpper c : echo cs
+
+firstLetter :: String -> Maybe Char
+firstLetter "" = Nothing
+firstLetter (c:_) = Just . toUpper c
