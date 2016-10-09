@@ -62,3 +62,24 @@ echo (c:cs) = toUpper c : echo cs
 firstLetter :: String -> Maybe Char
 firstLetter "" = Nothing
 firstLetter (c:_) = Just $ toUpper c
+
+myOr :: [Bool] -> Bool
+myOr [] = False
+myOr (b:bs)
+  | b == True = True
+  | otherwise = myOr bs
+
+myAny :: (a->Bool) -> [a] -> Bool
+myAny _ [] = False
+myAny p (x:xs)
+  | p x == True = True
+  | otherwise = myAny p xs
+
+myElem :: Eq a => a -> [a] -> Bool
+myElem _ [] = False
+myElem n (x:xs)
+  | n == x = True
+  | otherwise = myElem n xs
+
+myElem' :: Eq a => a -> [a] -> Bool
+myElem' n xs = myAny (n==) xs

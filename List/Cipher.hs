@@ -4,14 +4,21 @@ module Cipher where
 
 import Data.Char
 
-ordA :: Int
-ordA = ord 'a'
+ordFirst :: Int
+ordFirst = ord ' '
 
-ordZ :: Int
-ordZ = ord 'z'
+ordLast :: Int
+ordLast = ord '~'
+
+shiftAmount :: Int
+shiftAmount = 5
 
 caesar :: String -> String
-casesar = undefined
+caesar xs = map (shiftRight shiftAmount) xs
 
-shiftRight :: Char -> Char
-shiftRight = undefined
+shiftRight :: Int -> Char -> Char
+shiftRight i x =
+  case expr > ordLast of
+    True -> chr $ (ordFirst-1) + (expr - ordLast)
+    False -> chr $ expr
+    where expr = (ord x) + i
