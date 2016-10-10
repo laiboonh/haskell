@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 
-import Data.Char (toUpper)
+import           Data.Char (toUpper)
 
 eftChar :: Char -> Char -> [Char]
 eftChar x y = go x y []
@@ -83,3 +83,43 @@ myElem n (x:xs)
 
 myElem' :: Eq a => a -> [a] -> Bool
 myElem' n xs = myAny (n==) xs
+
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = myReverse xs ++ [x]
+
+squish :: [[a]] -> [a]
+squish [] = []
+squish (x:xs) = x ++ squish xs
+
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap _ [] = []
+squishMap f (x:xs) = (f x) ++ (squishMap f xs)
+
+squishAgain :: [[a]] -> [a]
+squishAgain xs = squishMap id xs
+
+myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy _ [] = undefined
+myMaximumBy _ (x:[]) = x
+myMaximumBy f (x:xs) =
+  case f x maxRestOfList of
+    GT -> x
+    _ -> maxRestOfList
+    where maxRestOfList = myMaximumBy f xs
+
+
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy _ [] = undefined
+myMinimumBy _ (x:[]) = x
+myMinimumBy f (x:xs) =
+  case f x maxRestOfList of
+    LT -> x
+    _ -> maxRestOfList
+    where maxRestOfList = myMinimumBy f xs
+
+maximum' :: (Ord a) => [a] -> a
+maximum' xs = myMaximumBy compare xs
+
+minimum' :: (Ord a) => [a] -> a
+minimum' xs = myMinimumBy compare xs
