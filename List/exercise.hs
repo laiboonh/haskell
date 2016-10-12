@@ -123,3 +123,18 @@ maximum' xs = myMaximumBy compare xs
 
 minimum' :: (Ord a) => [a] -> a
 minimum' xs = myMinimumBy compare xs
+
+stops :: [Char]
+stops = "pbtdkg"
+
+vowels :: [Char]
+vowels = "aeiou"
+
+threeLetterWord :: [(Char,Char,Char)]
+threeLetterWord = [(x,y,z) | x<-stops, y<-vowels, z<-stops, x/=z, x=='p']
+
+myOr' :: [Bool] -> Bool
+myOr' = foldr (||) False
+
+myAny' :: (a->Bool) -> [a] -> Bool
+myAny' p = foldr ((||) . p) False
