@@ -1,4 +1,4 @@
-# IO
+# List
 
 #### List comprehensions will expand the right most generator first
 ```haskell
