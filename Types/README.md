@@ -1,4 +1,5 @@
 # Types
+### "A type can be thought of as an enumeration of constructors that have zero or more arguments"
 
 #### type synonym. String is synonym for [Char]
 ```haskell
@@ -6,12 +7,16 @@
 type String = [Char]    -- Defined in ‘GHC.Base’
 ```
 
-#### type constructor can be values of a particular type
+#### type constructor with no arguments and data constructors with no arguments (nullary constructor)
+#### Bool is a *sum type* as it has more than one data constructor
+#### type constructors are used at *type level* (type signatures, type class declarations and instances) only
+#### data constructors are used at the *term level*, values you can interact with at runtime only
 ````haskell
 data Bool = False | True
 ````
 
-#### type constructor can be functions to create values of a particular type
+#### type constructor can be thought of as functions to create values of a particular type
+#### Maybe is a *sum type* as well
 ```haskell
 data Maybe a = Nothing | Just a
 ```
