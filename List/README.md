@@ -9,3 +9,23 @@ it :: Num t => [(t, t1)]
 [(1,1),(2,1),(3,1)]                
 it :: (Num t1, Num t) => [(t, t1)]
 ```
+
+#### Recursive function evaluation
+```haskell
+scanl :: (a -> b -> a) -> a -> [b] -> [a]
+scanl f q ls =
+  q : (case ls of
+        [] -> []
+        x:xs -> scanl f (f q x) xs)
+
+fibs = 1 : scanl (+) 1 fibs
+     = 1 : scanl (+) 1 (1 : scanl (+) 1 fibs)     
+     = 1 : scanl (+) 1 (1 : scanl (+) 1 (1 : scanl (+) 1 fibs))      
+     = 1 : scanl (+) 1 (1 : scanl (+) 1 (1 : scanl (+) 1 [1,?,?,..] ) )   --we can deduce that the result of fibs is something like [1,?,?,..]
+     = 1 : scanl (+) 1 (1 : scanl (+) 1 (1 : [1,2, ?, ?, ..]) )  --evaluate from inside out
+     = 1 : scanl (+) 1 (1 : scanl (+) 1 [1, 1, 2, ?, ?, .. ] )
+     = 1 : scanl (+) 1 (1 : [1, 2, 3, 5, ?,?, ..])
+     = 1 : scanl (+) 1 [1, 1, 2, 3, 5, ?, ?, ..]
+     = 1 : [1, 2, 3, 5, 8, 13, ?, ?, ..]
+     = [1, 1, 2, 3, 5, 8, 13, ?, ?, ..]
+```
