@@ -19,3 +19,6 @@ oneIsOne = dodgy 1
 
 oneIsTwo :: Num a => a -> a
 oneIsTwo = (flip dodgy) 2
+
+data Doggies a = Husky a | Mastiff a deriving (Eq, Show)
+data DogueDeBordeaux doge = DogueDeBordeaux doge

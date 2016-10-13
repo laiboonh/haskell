@@ -138,3 +138,27 @@ myOr' = foldr (||) False
 
 myAny' :: (a->Bool) -> [a] -> Bool
 myAny' p = foldr ((||) . p) False
+
+myElem'' :: Eq a => a -> [a] -> Bool
+myElem'' x = foldr ((||) . (==x)) False
+
+myElem''' :: Eq a => a -> [a] -> Bool
+myElem''' x = any (==x)
+
+myReverse' :: [a] -> [a]
+myReverse' = foldl (flip (:)) []
+
+myMap :: (a -> b) -> [a] -> [b]
+myMap f = foldr ((:) . f) []
+
+myFilter :: (a->Bool) -> [a] -> [a]
+myFilter p = foldr (\x acc -> if (p x) then x:acc else acc) []
+
+squish' :: [[a]] -> [a]
+squish' = foldr (++) []
+
+squishMap' :: (a->[b]) -> [a] -> [b]
+squishMap' f = foldr ((++).f) []
+
+squishAgain' :: [[a]] -> [a]
+squishAgain' = squishMap' id
