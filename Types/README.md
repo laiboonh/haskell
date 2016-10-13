@@ -7,7 +7,8 @@
 type String = [Char]    -- Defined in ‘GHC.Base’
 ```
 
-#### type constructor with no arguments and data constructors with no arguments (nullary constructor)
+#### type constructor with no arguments (type constant) and data constructors with no arguments (constant)
+#### such constructors are also known as *nullary constructors*
 #### Bool is a *sum type* as it has more than one data constructor
 #### type constructors are used at *type level* (type signatures, type class declarations and instances) only
 #### data constructors are used at the *term level*, values you can interact with at runtime only
@@ -15,11 +16,25 @@ type String = [Char]    -- Defined in ‘GHC.Base’
 data Bool = False | True
 ````
 
-#### type constructor can be thought of as functions to create values of a particular type
+#### parametric type constructor must be *applied* to a *type constant* to become concrete type
+#### parametric data constructor must be *applied* to a become
 #### Maybe is a *sum type* as well
 ```haskell
 data Maybe a = Nothing | Just a
 ```
+
+#### To find out types of types (Kinds)
+```haskell
+λ> :k Maybe
+Maybe :: * -> * -- like a function, waiting to be applied
+λ> :k Bool
+Bool :: * -- a fully applied concrete type
+λ> :k True -- kinds is for type constructors only
+
+<interactive>:1:1:
+    Not in scope: type constructor or class ‘True’
+```
+
 
 #### **type variable** *a* is *constrained* to the Num **type class**
 ```haskell
