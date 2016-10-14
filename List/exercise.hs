@@ -162,3 +162,11 @@ squishMap' f = foldr ((++).f) []
 
 squishAgain' :: [[a]] -> [a]
 squishAgain' = squishMap' id
+
+myMaximumBy' :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy' _ [] = error "Empty list"
+myMaximumBy' f (x:xs) = foldr (\v acc -> if (f v acc == GT) then v else acc) x xs
+
+myMinimumBy' :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy' _ [] = error "Empty list"
+myMinimumBy' f (x:xs) = foldr (\v acc -> if (f v acc == LT) then v else acc) x xs
