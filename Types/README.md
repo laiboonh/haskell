@@ -39,7 +39,7 @@ Bool :: * -- a fully applied concrete type
 #### Cardinality of a datatype is the number of possible values it defines
 ```haskell
 data Bool = True | False --Bool is a sum type, the cardinality of Bool is 2
-data ExampleType = ExampleValue Int String deriving (Eq,Show) --ExampleType is a product type, the cardinality of ExampleType is the product of possible values of Int and String
+data Example = MakeExample Int String deriving (Eq,Show) --Example is a product type, the cardinality of Example is the product of possible values of Int and String
 ```
 
 #### **type variable** *a* is *constrained* to the Num **type class**
