@@ -16,8 +16,8 @@ type String = [Char]    -- Defined in ‘GHC.Base’
 data Bool = False | True
 ````
 
-#### parametric type constructor must be *applied* to a *type constant* to become concrete type
-#### parametric data constructor must be *applied* to a become
+#### parametric type constructor must be *applied* to a *type constant* to become a concrete type
+#### parametric data constructor must be *applied* to a *value* to become a concrete value
 #### Maybe is a *sum type* as well
 ```haskell
 data Maybe a = Nothing | Just a

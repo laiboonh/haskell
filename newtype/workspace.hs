@@ -18,3 +18,8 @@ instance (Ord a, Num a, TooMany a) => TooMany (a,a) where
   tooMany (n1,n2) = n1+n2 > 42
 
 newtype Goats = Goats Int deriving (Eq,Show,TooMany)
+
+data Person = Person {
+  name::String,
+  age::Int
+} deriving (Eq,Show)
