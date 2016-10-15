@@ -38,8 +38,22 @@ Bool :: * -- a fully applied concrete type
 #### Arity is the number of arguments that a function or constructor takes
 #### Cardinality of a datatype is the number of possible values it defines
 ```haskell
-data Bool = True | False --Bool is a sum type, the cardinality of Bool is 2
-data Example = MakeExample Int String deriving (Eq,Show) --Example is a product type, the cardinality of Example is the product of possible values of Int and String
+data Quantum = Yes | No | Both --Quantum is a sum type, the cardinality of Quantum is 3
+data Example = MakeExample Quantum Quantum deriving (Eq,Show) --Example is a product type, the cardinality of Example is the product of possible values of Quantum and Quantum which is 3*3 = 9
+```
+#### Cardinality of a function is the number of possible *implementations*
+#### For a function a->b, the cardinality is b^a
+```haskell
+f :: Quantum -> Bool
+f Yes = True
+f No = True
+f Both = True
+--Another implementation
+f :: Quantum -> Quantum
+f Yes = False
+f No = False
+f Both = False
+--basically all the possible combinations of 3 boolean values 2^3 = 8
 ```
 
 #### **type variable** *a* is *constrained* to the Num **type class**
