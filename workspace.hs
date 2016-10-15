@@ -1,4 +1,5 @@
 {-# OPTIONS_GHC -Wall #-}
+{-# LANGUAGE TypeOperators #-}
 
 -- To find out if lists in list is all same length
 sameLength :: [[a]] -> Bool
@@ -24,3 +25,5 @@ data Doggies a = Husky a | Mastiff a deriving (Eq, Show)
 data DogueDeBordeaux doge = DogueDeBordeaux doge
 
 data Example = MakeExample Int deriving Show
+
+data (a # b) = Just a
