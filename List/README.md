@@ -1,5 +1,19 @@
 # List
 
+#### Definition
+#### Any operator that starts with a colon (:) must be an infix type or data constructor
+```haskell
+data [] a = [] | a : [a] -- (:) is data constructor
+λ> let empty = []
+empty :: [t] -- the type parameter is not applied because it's not possible to infer what the list contains from []
+
+data List a = Nil | Cons a (List a)
+λ> :k List
+List :: * -> *
+λ> :k List Int
+List Int :: *
+```
+
 #### List comprehensions will expand the right most generator first
 ```haskell
 λ> [(x,y) | x<-[1,2,3], y<-[]]
