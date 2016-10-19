@@ -23,7 +23,7 @@ Prelude| k (x,y) = x
 Prelude| :}
 k :: (t, t1) -> t
 ```
-8. To browse functions in a module `:b Data.Maybe`
+8. To browse functions in a module `:browse! Data.Maybe`
 ```haskell
 λ> :browse! Data.Maybe
 -- not currently imported
