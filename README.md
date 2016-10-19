@@ -23,6 +23,24 @@ Prelude| k (x,y) = x
 Prelude| :}
 k :: (t, t1) -> t
 ```
+8. To browse functions in a module `:b Data.Maybe`
+```haskell
+λ> :browse! Data.Maybe
+-- not currently imported
+Data.Maybe.catMaybes :: [Maybe a] -> [a]
+Data.Maybe.fromJust :: Maybe a -> a
+Data.Maybe.fromMaybe :: a -> Maybe a -> a
+Data.Maybe.isJust :: Maybe a -> Bool
+Data.Maybe.isNothing :: Maybe a -> Bool
+Data.Maybe.listToMaybe :: [a] -> Maybe a
+Data.Maybe.mapMaybe :: (a -> Maybe b) -> [a] -> [b]
+Data.Maybe.maybeToList :: Maybe a -> [a]
+-- imported via Prelude
+maybe :: b -> (a -> b) -> Maybe a -> b
+Just :: a -> Maybe a
+data Maybe a = Nothing | Just a
+Nothing :: Maybe a
+```
 
 ### Customize GHCI
 #### Edit appropriate ghci.conf file.
