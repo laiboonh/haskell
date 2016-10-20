@@ -101,5 +101,59 @@ flipMaybe lst = case go lst of
   ys -> Just ys
   where go :: [Maybe a] -> [a]
         go [] = []
-        go (Nothing:xs) = go xs
+        go (Nothing:_) = []
         go ((Just a):xs) = a : (go xs)
+
+lefts' :: [Either a b] -> [a]
+lefts' lst = foldr f [] lst
+  where f :: (Either a b) -> [a] -> [a]
+        f (Left a) acc = a:acc
+        f _ acc = acc
+
+rights' :: [Either a b] -> [b]
+rights' lst = foldr f [] lst
+  where f :: (Either a b) -> [b] -> [b]
+        f (Right b) acc = b:acc
+        f _ acc = acc
+
+partitionEithers' :: [Either a b] -> ([a],[b])
+partitionEithers' lst = (lefts' lst,rights' lst)
+
+eitherMaybe' :: (b->c) -> Either a b -> Maybe c
+eitherMaybe' _ (Left _) = Nothing
+eitherMaybe' f (Right b) = Just (f b)
+
+either' :: (a->c) -> (b->c) -> Either a b -> c
+either' f1 _ (Left a) = f1 a
+either' _ f2 (Right b) = f2 b
+
+eitherMaybe'' :: (b->c) -> Either a b -> Maybe c
+eitherMaybe'' f e = either' (\_->Nothing) (\x->Just(f x)) e
+
+myIterate :: (a->a) -> a -> [a]
+myIterate f x = x:(myIterate f y)
+  where y = f x
+
+myUnfoldr :: (b->Maybe(a,b)) -> b -> [a]
+myUnfoldr f x = case (f x) of
+  Nothing -> []
+  Just (a,b) -> a : myUnfoldr f b
+
+betterIterate :: (a->a) -> a -> [a]
+betterIterate f a = myUnfoldr (\x -> Just (x,(f x))) a
+
+data BinaryTree a =
+  Leaf |
+  Node (BinaryTree a) a (BinaryTree a)
+  deriving (Eq,Ord,Show)
+
+unfold :: (a->Maybe(a,b,a)) -> a -> BinaryTree b
+unfold f x = case (f x) of
+  Nothing -> Leaf
+  Just (a1,b,a2) -> Node (unfold f a1) b (unfold f a2)
+
+treeBuild :: Integer -> BinaryTree Integer
+treeBuild n = unfold f 0
+  where f m
+          | m == n = Nothing
+          | otherwise = Just (m + 1, m, m + 1)
