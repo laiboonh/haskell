@@ -24,8 +24,43 @@ countTheBeforeVowel s = go (words s) 0
           | otherwise = go xs acc
         go _ acc = acc
 
-vowel :: Char -> Bool
-vowel c = elem c "aeiou"
+isVowel :: Char -> Bool
+isVowel c = elem c vowels
 
-countVowels :: String -> Integer
-countVowels s = foldr (\x acc ->if vowel x then acc+1 else acc) 0 s
+countVowels :: String -> Int
+countVowels s = foldr (\x acc ->if isVowel x then acc+1 else acc) 0 s
+
+newtype Word' = Word' String deriving (Eq,Show)
+
+vowels :: String
+vowels = "aeiou"
+
+mkWord :: String -> Maybe Word'
+mkWord s = case moreThanHalf (numberOfVowels s) (length s) of
+  True -> Nothing
+  _ -> Just (Word' s)
+  where numberOfVowels = countVowels
+
+moreThanHalf :: (Ord a, Integral a) => a -> a -> Bool
+moreThanHalf x1 x2
+  | x1 > (x2 `div` 2) = True
+  | otherwise = False
+
+data Nat =
+  Zero
+  | Succ Nat
+  deriving (Eq,Show)
+
+natToInteger :: Nat -> Integer
+natToInteger Zero = 0
+natToInteger (Succ Zero) = 1
+natToInteger (Succ nat) = 1 + natToInteger nat
+
+integerToNat :: Integer -> Maybe Nat
+integerToNat i
+  | i < 0 = Nothing
+  | otherwise = Just (go i)
+    where go :: Integer -> Nat
+          go 0 = Zero
+          go 1 = Succ Zero
+          go x = Succ (go (x-1))
