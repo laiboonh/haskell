@@ -76,3 +76,17 @@ Nothing :: Maybe a
 1. `stack ghc -- helloworld.hs -c`
 2. Run helloworld.exe
 3. If your source file has dependencies on other object files they will be linked automatically assuming they are in the same directory
+
+### Cabal init
+1. `cabal init --help`
+2. `cabal init -n -l BSD3 --is-executable --language=Haskell2010 -a 'laiboonh' -s 'Saying Hello' -p hello-haskell`
+3. `cabal sandbox init` To isolate dependencies to this project, if not dependencies will be installed into package-db in home directory
+4. `cabal install --only-dependencies` To install dependencies
+5. `cabal build`
+6. `./dist/build/hello-haskell/hello-haskell`
+7. `cabal repl`
+
+### Including a locally developed library
+1. `cabal sandbox init`
+2. `cabal sandbox add-source ../hello-haskell`
+3. `cabal install --only-dependencies`
