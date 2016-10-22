@@ -25,9 +25,10 @@ gameWords :: IO WordList
 gameWords = do
   (WordList aw) <- allWords
   return $ WordList (filter gameLength aw)
-  where gameLength w =
-              let l = length w
-              in l > minWordLength && l < maxWordLength
+  where
+    gameLength w =
+      let l = length w
+      in l > minWordLength && l < maxWordLength
 
 randomWord ::WordList -> IO String
 randomWord (WordList wl) = do
