@@ -3,7 +3,7 @@
 module Cipher where
 
 import           Data.Char
-import Data.List (findIndex, group, nub, sort)
+import           Data.List (findIndex, group, nub, sort)
 
 ordFirst :: Int
 ordFirst = ord 'A'
@@ -27,6 +27,22 @@ caesar _ [] _ = []
 caesar (x:xs) (y:ys) acc
   | x == ' ' = caesar xs (y:ys) ((shiftRight 0 x) : acc)
   | otherwise = caesar xs ys ((shiftRight (shiftAmt y) x) : acc)
+
+type Message = String
+type Key = String
+type Cipher = String
+vig :: Message -> Key -> Cipher
+vig message key = caesar message (cycle key) []
+
+main :: IO String
+main = do
+  putStr "Enter your message: "
+  message <- getLine
+  putStr "Enter your key: "
+  key <- getLine
+  return ("This is your cipher " ++ vig message key)
+
+
 
 isSubsequenceOf :: (Eq a) => [a] -> [a] -> Bool
 isSubsequenceOf [] _ = True

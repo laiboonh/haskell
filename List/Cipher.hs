@@ -2,7 +2,7 @@
 
 module Cipher where
 
-import Data.Char
+import           Data.Char
 
 ordFirst :: Int
 ordFirst = ord ' '
@@ -22,3 +22,9 @@ shiftRight i x =
     True -> chr $ (ordFirst-1) + (expr - ordLast)
     False -> chr $ expr
     where expr = (ord x) + i
+
+main :: IO String
+main = do
+  putStr "Enter your text: "
+  clear <- getLine
+  return ("This is your cipher: " ++ caesar clear)
