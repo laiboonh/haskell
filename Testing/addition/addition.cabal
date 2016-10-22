@@ -22,7 +22,8 @@ library
   build-depends:       base >=4.9 && <4.10,
                        hspec,
                        directory,
-                       process
+                       process,
+                       QuickCheck
   ghc-options:         -Wall -fwarn-tabs
   -- hs-source-dirs:
   default-language:    Haskell2010
