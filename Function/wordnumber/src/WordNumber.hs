@@ -4,6 +4,7 @@ import           Data.List (intersperse)
 
 digitToWord :: Int -> String
 digitToWord n
+  | n == 0 = "zero"
   | n == 1 = "one"
   | n == 2 = "two"
   | n == 3 = "three"
@@ -13,6 +14,7 @@ digitToWord n
   | n == 7 = "seven"
   | n == 8 = "eigth"
   | n == 9 = "nine"
+  | otherwise = error "Illegal digit"
 
 digits :: Int -> [Int]
 digits n = go n []
