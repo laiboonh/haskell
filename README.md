@@ -90,3 +90,6 @@ Nothing :: Maybe a
 1. `cabal sandbox init`
 2. `cabal sandbox add-source ../hello-haskell`
 3. `cabal install --only-dependencies`
+
+### Including Test suite in Cabal
+1. `cabal configure --enable-tests`
