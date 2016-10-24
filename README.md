@@ -77,6 +77,10 @@ Nothing :: Maybe a
 2. Run helloworld.exe
 3. If your source file has dependencies on other object files they will be linked automatically assuming they are in the same directory
 
+### Compiling modular haskell files
+1. Assuming you have a Listy.hs and a ListIntances.hs depends on it
+2. `stack ghc -- ListyInstances.hs -I. --make ` We include the current directory and make modules within it discoverable
+
 ### Cabal init
 1. `cabal init --help`
 2. `cabal init -n -l BSD3 --is-executable --language=Haskell2010 -a 'laiboonh' -s 'Saying Hello' -p hello-haskell`
