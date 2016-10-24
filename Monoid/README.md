@@ -52,3 +52,6 @@ mappend x mempty = x
 mappend x (mappend y z) = mappend (mappend x y) z
 mconcat  = foldr mappend empty
 ```
+
+### Orphan Instance
+#### "An orphan instance is when an instance is defined for a datatype and typeclass, but not in the same module as either the declaration of the typeclass or the datatype"
