@@ -10,7 +10,7 @@ class Monoid a where
   mconcat :: [a] -> a
 ```
 
-#### Some types have more than 1 monoid. For example Integer summation and multiplication are both monoidal. Hence there are two new types with two instance of Monoid
+#### Some types have more than 1 monoid. For example numerical summation and multiplication are both monoidal. Hence there are two new types with two instance of Monoid because "Typeclasses have *unique* pairings of the class (Monoid) and the instance of a particular type (Num)"
 ```haskell
 λ> :m + Data.Monoid
 λ> mappend (Sum 1) (Sum 2)
