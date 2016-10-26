@@ -1,6 +1,8 @@
 {-# OPTIONS_GHC -Wall #-}
 {-# LANGUAGE TypeOperators #-}
 
+import Data.Semigroup
+
 -- To find out if lists in list is all same length
 sameLength :: [[a]] -> Bool
 sameLength [] = False
@@ -27,3 +29,15 @@ data DogueDeBordeaux doge = DogueDeBordeaux doge
 data Example = MakeExample Int deriving Show
 
 data (a # b) = Just a
+
+
+newtype Identity a =
+  Identity a
+  deriving (Eq, Show)
+instance (Semigroup a) => Semigroup (Identity a) where
+  (Identity x1) <> (Identity x2) = Identity (x1 <> x2)
+
+newtype BoolConj =
+  BoolConj Bool deriving (Eq,Show)
+instance Semigroup BoolConj where
+  (BoolConj b1) <> (BoolConj b2) = BoolConj (b1 && b2)
