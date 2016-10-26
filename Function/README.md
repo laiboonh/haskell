@@ -75,3 +75,24 @@ pal xs
   | xs == reverse xs = True
   | otherwise = False
 ```
+
+#### "Kinds are the types of type constructors, primarily encoding the number of arguments they take."
+```haskell
+λ> :k Bool
+Bool :: *
+λ> :m +Data.List.NonEmpty
+λ> :k NonEmpty
+NonEmpty :: * -> *
+λ> :i NonEmpty
+data NonEmpty a = a :| [a] 
+```
+
+#### "Each argument and result of every function must be a type constant not a type constructor"
+```haskell
+λ> :k (->)
+(->) :: * -> * -> *
+--Therefore f must accept a single type argument and be of the kind * -> *
+λ> :t fmap
+fmap :: Functor f => (a -> b) -> f a -> f b
+
+```
