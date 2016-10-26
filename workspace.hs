@@ -41,3 +41,13 @@ newtype BoolConj =
   BoolConj Bool deriving (Eq,Show)
 instance Semigroup BoolConj where
   (BoolConj b1) <> (BoolConj b2) = BoolConj (b1 && b2)
+
+data FixMePls a =
+  FixMe |
+  Pls a
+  deriving (Eq, Show)
+instance Semigroup (FixMePls a) where
+  (Pls a) <> _ = (Pls a)
+  _ <> _ = FixMe
+instance Functor FixMePls where
+  fmap _ _ = FixMe
