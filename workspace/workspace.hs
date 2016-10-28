@@ -2,6 +2,7 @@
 {-# LANGUAGE TypeOperators #-}
 
 import Data.Semigroup
+import Test.QuickCheck
 
 -- To find out if lists in list is all same length
 sameLength :: [[a]] -> Bool
