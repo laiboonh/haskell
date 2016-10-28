@@ -22,6 +22,7 @@ library
   build-depends:       base >=4.9 && <4.10,
                        QuickCheck,
                        directory,
-                       process
+                       process,
+                       hspec
   -- hs-source-dirs:
   default-language:    Haskell2010

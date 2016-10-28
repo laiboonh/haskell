@@ -2,7 +2,8 @@
 
 #### Generating random values
 ```haskell
-λ> sample :: Show a => Gen a -> IO ()
+λ> :t sample
+sample :: Show a => Gen a -> IO ()
 λ> sample (arbitrary :: Gen Int)
 0
 2
@@ -19,6 +20,8 @@
 
 #### Dictating the sample space for random value generation
 ```haskell
+λ> :t return
+return :: Monad m => a -> m a
 λ> sample (return 1 :: Gen Int )
 1
 1
@@ -67,4 +70,26 @@ frequency :: [(Int, Gen a)] -> Gen a
 'B'
 'B'
 'B'
+```
+
+#### Generating tuples
+```haskell
+genTuple :: (Arbitrary a, Arbitrary b) => Gen (a,b)
+genTuple = do
+  a <- arbitrary
+  b <- arbitrary
+  return (a,b)
+
+λ> sample (genTuple :: Gen(Int,Float))
+(0,0.0)
+(-2,-4.413058)
+(2,-2.912873)
+(-2,-0.72597295)
+(6,2.4764097)
+(-10,18.680439)
+(-12,-91.8728)
+(5,21.62951)
+(-9,5.3449793)
+(13,-3.0478463)
+(0,-13.311042)
 ```
