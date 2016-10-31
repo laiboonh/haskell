@@ -6,7 +6,7 @@
 3. `stack ghci`
 
 ### Setting up Atom
-1. search for package **atom-beautify** **language-haskell**
+1. search for package **atom-beautify** **language-haskell** **linter** **linter-hlint**
 2. `stack install stylish-haskell`
 
 ### Using GHCI
