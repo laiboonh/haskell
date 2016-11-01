@@ -1,5 +1,7 @@
 # Functor
 
+### "A functor is a way to apply a function over or around some structure that we don’t want to alter."
+
 #### Take note that f is a *non concrete* type constructor
 ```haskell
 λ> :i Functor
