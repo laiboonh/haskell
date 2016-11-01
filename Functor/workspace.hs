@@ -37,3 +37,37 @@ instance Functor (Two a) where
 instance Functor (Or a) where
   fmap _ (First a) = First a
   fmap f (Second b) = Second (f b)
+
+data Possibly a =
+  LolNope |
+  Yeppers a
+  deriving (Eq, Show)
+instance Functor Possibly where
+  fmap _ LolNope = LolNope
+  fmap f (Yeppers a) = Yeppers (f a)
+
+applyIfJust :: (a -> b) -> Possibly a -> Possibly b
+applyIfJust f m = fmap f m
+
+data Sum' a b =
+  First' a |
+  Second' b
+  deriving (Eq, Show)
+instance Functor (Sum' a) where
+  fmap _ (First' a) = First' a
+  fmap f (Second' b) = Second' (f b)
+applyIfSecond :: (a -> b) -> (Sum' e) a -> (Sum' e) b
+applyIfSecond f m = fmap f m
+
+data Wrap f a =
+  Wrap (f a)
+  deriving (Eq, Show)
+
+instance (Functor f) => Functor (Wrap f) where
+  fmap f (Wrap fa) = Wrap (fmap f fa)
+
+type Nat f g = forall a . f a -> g a
+-- This'll work
+maybeToList :: Nat Maybe []
+maybeToList Nothing = []
+maybeToList (Just a) = [a]

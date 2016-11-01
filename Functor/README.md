@@ -112,3 +112,15 @@ Left "fail"
 λ> fmap (+1) (Right 1)
 Right 2
 ```
+
+#### Natural Transformation - transform only the structure and leave the type argument to that structure or type constructor alone
+```haskell
+type Nat f g = forall a . f a -> g a
+-- This'll work
+maybeToList :: Nat Maybe []
+maybeToList Nothing = []
+maybeToList (Just a) = [a]
+
+λ> maybeToList (Just 100)
+[100]
+```
