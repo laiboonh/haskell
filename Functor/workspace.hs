@@ -1,4 +1,5 @@
 {-# OPTIONS_GHC -Wall #-}
+{-# OPTIONS_GHC -XRank2Types #-}
 
 data WhoCares a =
   ItDoesnt
