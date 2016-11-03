@@ -77,6 +77,6 @@ pure f <*> pure x = pure (f x)
 ```haskell
 u <*> pure y = pure ($ y) <*> u
 λ> (Just (+2) <*> pure 2) == (pure ($ 2) <*> Just (+2))
--- pure ($ 2) <*> Just (+2) = ($2) (+2)
+-- pure ($ 2) <*> Just (+2) = Just (($ 2) (+2))
 True
 ```
