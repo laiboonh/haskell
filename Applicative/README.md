@@ -5,6 +5,7 @@
 | Monoid | Functor | Applicative (Monodial Functor) |
 | --- | --- | --- |
 | Mashing two values of the same type together via mappend | Function application over some structure leaving the structure undisturbed | Function and value both have structure, we have to mash the structure together and leave it intact |
+| (<>) | (<$>) | <*> |
 
 #### Notice that f is constrained by the Functor typeclass
 ```haskell
@@ -79,4 +80,38 @@ u <*> pure y = pure ($ y) <*> u
 λ> (Just (+2) <*> pure 2) == (pure ($ 2) <*> Just (+2))
 -- pure ($ 2) <*> Just (+2) = Just (($ 2) (+2))
 True
+```
+
+#### Testing the Applicative Laws using checkers
+```haskell
+λ> :t applicative
+applicative
+  :: (EqProp (m c), EqProp (m b), EqProp (m a),
+      Arbitrary (m (b -> c)), Arbitrary (m (a -> b)), Arbitrary (m a),
+      Arbitrary b, Arbitrary a, CoArbitrary a, Applicative m,
+      Show (m (b -> c)), Show (m (a -> b)), Show (m a), Show a) =>
+     m (a, b, c) -> TestBatch
+
+newtype Identity a =
+  Identity a
+  deriving (Eq,Show)
+
+instance Functor (Identity) where
+  fmap f (Identity a) = Identity (f a)
+
+instance Applicative (Identity) where
+  pure a = Identity a
+  (<*>) (Identity f) a = fmap f a
+
+instance Arbitrary a => Arbitrary (Identity a) where
+  arbitrary = do
+    a <- arbitrary
+    return (Identity a)
+     
+main :: IO ()
+--main = quickBatch $ applicative (undefined :: Identity (String,String,Integer))
+main = quickBatch $ applicative (Identity ("b"::[Char], "w"::[Char], 1::Integer))
+
+--reuse the pre existing eq
+instance Eq a => EqProp (Identity a) where (=-=) = eq
 ```
