@@ -5,7 +5,7 @@
 | Monoid | Functor | Applicative (Monodial Functor) |
 | --- | --- | --- |
 | Mashing two values of the same type together via mappend | Function application over some structure leaving the structure undisturbed | Function and value both have structure, we have to mash the structure together and leave it intact |
-| (<>) | (<$>) | <*> |
+| (<>) | (<$>) | (<*>) |
 
 #### Notice that f is constrained by the Functor typeclass
 ```haskell
@@ -107,7 +107,7 @@ instance Arbitrary a => Arbitrary (Identity a) where
   arbitrary = do
     a <- arbitrary
     return (Identity a)
-     
+
 main :: IO ()
 --main = quickBatch $ applicative (undefined :: Identity (String,String,Integer))
 main = quickBatch $ applicative (Identity ("b"::[Char], "w"::[Char], 1::Integer))
