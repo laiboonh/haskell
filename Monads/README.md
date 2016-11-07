@@ -5,7 +5,7 @@
 | Monoid | Functor | Applicative (Monodial Functor) | Monads (Applicative Functor) |
 | --- | --- | --- | --- |
 | Mashing two values of the same type together via mappend | Function application over some structure leaving the structure undisturbed | Function and value both have structure, we have to mash the structure together and leave it intact | Another way of applying functions over structure, with a couple of additional features |
-| mappend (<>) | fmap (<$>) | ap (<*>) | bind >>= |
+| mappend (<>) | fmap (<$>) | ap (<*>) | bind (>>=) |
 
 ####
 ```haskell
