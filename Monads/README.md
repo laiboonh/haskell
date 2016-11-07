@@ -29,7 +29,7 @@ bind :: Monad m => m a -> (a -> m b) -> m b
 bind x f = join $ fmap f x
 ```
 
-#### "do" as a sybtatic sugar
+#### "do" as a syntatic sugar
 ```haskell
 bindingAndSequencing :: IO () bindingAndSequencing = do
 putStrLn "name pls:"
