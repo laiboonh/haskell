@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 
-import Control.Monad
+import           Control.Monad (join)
 
-bind :: Monad m => (a -> m b) -> m a -> m b
-bind f x = join $ fmap f x
+bind :: Monad m => m a -> (a -> m b) -> m b
+bind x f = join $ fmap f x
