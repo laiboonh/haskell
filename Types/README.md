@@ -69,6 +69,34 @@ f Both = False
 x :: Int
 ```
 
+### Conversion between types
+```haskell
+--fromIntegral converts Integer or Int to Num (polymorphic)
+λ> :t fromIntegral
+fromIntegral :: (Integral a, Num b) => a -> b
+λ> :i Integral
+...
+instance Integral Integer -- Defined in ‘GHC.Real’
+instance Integral Int -- Defined in ‘GHC.Real’
+λ> let x = 10 :: Int
+x :: Int
+λ> let y = fromIntegral x
+y :: Num b => b
+```
+```haskell
+--round, ceiling or floor converts RealFrac(Float or Double) to Integral(Integer or Int)
+λ> :t round
+round :: (Integral b, RealFrac a) => a -> b
+λ> :i RealFrac
+...
+instance RealFrac Float -- Defined in ‘GHC.Float’
+instance RealFrac Double -- Defined in ‘GHC.Float’
+λ> let x = 1.23 :: Float
+x :: Float
+λ> let y = round x
+y :: Integral b => b
+```
+
 # 3 kinds of type signatures
 
 #### Parametric polymorphism (maximum polymorphism a can be anything)

@@ -74,6 +74,10 @@ pal :: (Eq a) => [a] -> Bool
 pal xs
   | xs == reverse xs = True
   | otherwise = False
+--otherwise is a synonym for True
+λ> otherwise
+True
+it :: Bool  
 ```
 
 #### "Kinds are the types of type constructors, primarily encoding the number of arguments they take."
@@ -84,7 +88,7 @@ Bool :: *
 λ> :k NonEmpty
 NonEmpty :: * -> *
 λ> :i NonEmpty
-data NonEmpty a = a :| [a] 
+data NonEmpty a = a :| [a]
 ```
 
 #### "Each argument and result of every function must be a type constant not a type constructor"
