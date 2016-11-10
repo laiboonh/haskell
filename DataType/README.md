@@ -1,6 +1,6 @@
 # DataType
 
-#### Different ways of defining value constructors
+#### Different ways of defining data(value) constructors. Type & Data constructor names have to be upper case. Variables & Function names have to be lower case.
 ```haskell
 data GuessWhat = Chickenbutt deriving (Eq,Show) -- type and data nullary constructors
 data Id a = MkId a deriving (Eq,Show) -- type and data unary constructors, Id is sum type
@@ -11,6 +11,11 @@ data RecordProduct a b =
     pfirst  :: a,
     psecond :: b
   } deriving (Eq,Show) -- Record syntax
+```
+#### Type constructor is also a function
+```haskell
+λ> :t MkId
+MkId :: a -> Id a
 ```
 
 #### Different ways of constructing value
