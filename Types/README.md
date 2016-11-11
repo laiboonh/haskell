@@ -112,3 +112,33 @@ negate :: Num a => a -> a
 λ> let a = 1.0::Double
 a :: Double
 ```
+
+# Polymorphism
+
+## Polymorphic data types
+#### t is a **type variable**. Type variables must be lowercase whereas type must be uppercase.
+#### List type is **parameterized** by a type just like function can be parameterized by some parameters.
+```haskell
+--Compare non-polymorphic vs polymorphic
+data IntList = Empty | Cons Int IntList
+  deriving Show
+
+data List t = Empty' | Cons' t (List t)  
+```
+
+## Polymorphic functions
+#### In polymorphic functions, the caller gets to pick the types.
+```haskell
+--Compare non-polymorphic vs polymorphic
+keepOnlyEven :: IntList -> IntList
+keepOnlyEven Empty = Empty
+keepOnlyEven (Cons x xs)
+  | even x    = Cons x (keepOnlyEven xs)
+  | otherwise = keepOnlyEven xs
+
+filterList :: (t -> Bool) -> List t -> List t   
+filterList _ Empty' = Empty'
+filterList p (Cons' x xs)
+  | p x       = Cons' x (filterList p xs)
+  | otherwise = filterList p xs
+```
