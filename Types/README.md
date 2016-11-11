@@ -116,8 +116,8 @@ a :: Double
 # Polymorphism
 
 ## Polymorphic data types
-#### t is a **type variable**. Type variables must be lowercase whereas type must be uppercase.
-#### List type is **parameterized** by a type just like function can be parameterized by some parameters.
+#### t is a *type variable*. Type variables must be lowercase whereas type must be uppercase.
+#### List type is *parameterized* by a type just like function can be parameterized by some parameters.
 ```haskell
 --Compare non-polymorphic vs polymorphic
 data IntList = Empty | Cons Int IntList
