@@ -12,7 +12,6 @@ instance Ord Bool -- Defined in ‘GHC.Classes’
 instance Read Bool -- Defined in ‘GHC.Read’
 instance Show Bool -- Defined in ‘GHC.Show’
 ```
-#### typeclass declaration, functions of this type class and instances of typeclass
 #### Eq is declared to be a type class with a single type parameter, *a*. Any type which wants to be an instance of Eq must define two functions, (==) and (/=) with the indicated type signatures.
 ```haskell
 λ>:i Eq
@@ -38,7 +37,7 @@ class (Foo a) => Baz a where
 ```
 
 #### Declaring a type and implementing a typeclass
-#### info shows that in order to implement Show one has to minimally implement showsPrec or show method
+#### info (:i) shows that in order to implement Show one has to minimally implement showsPrec or show method
 ```haskell
 λ> :i Show
 class Show a where
@@ -63,7 +62,7 @@ it :: Mood
 it :: Mood  
 ```
 
-#### Default implementation
+#### Default *Show* implementation
 ```haskell
 λ> data Mood = Mood' deriving Show
 ```
@@ -89,7 +88,7 @@ instance Eq Date where
     dayOfWeek == dayOfWeek' && dayOfMonth == dayOfMonth'
 ```
 
-#### What if the constructors type variables may or may not implement Eq
+#### What if the constructors type variables may or may not implement Eq? We set a *typeclass constraint*
 ```haskell
 data Identity a = Identity' a
 instance Eq a => Eq (Identity a) where
@@ -97,7 +96,7 @@ instance Eq a => Eq (Identity a) where
     v == v'
 ```
 
-#### Eq is a superclass of Ord, Ord is a subclass of Eq
+#### Eq is a "superclass" of Ord, Ord is a "subclass" of Eq
 ```haskell
 class Eq a => Ord a where
   compare :: a -> a -> Ordering
