@@ -99,18 +99,26 @@ y :: Integral b => b
 
 # 3 kinds of type signatures
 
-#### Parametric polymorphism (maximum polymorphism a can be anything)
+#### Parametric polymorphism (maximum polymorphism, a can be anything)
+#### *"parametric"* is just a fancy term for *"works uniformly for any type chosen by the caller"*
+#### id is a polymorphic function.
 ```haskell
 id :: a -> a
 ```
 #### Constrained polymorphism (potential type of a is reduced however there are common functions of Num that can be used now)
+#### (+) is a *type-class-polymorphic* function. Num is a *typeclass*. (+) only work for types which are instances of Num.
 ```haskell
-negate :: Num a => a -> a
+λ> :t (+)
+(+) :: Num a => a -> a -> a
 ```
 #### Concrete type (can make use of common methods of Num as well as Fractional)
+#### The compiler uses type inference to figure out which (==) implementation to use.
 ```haskell
 λ> let a = 1.0::Double
-a :: Double
+λ> :t 1
+1 :: Num a => a
+λ> a + 1
+2.0
 ```
 
 # Polymorphism

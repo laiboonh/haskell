@@ -13,6 +13,7 @@ instance Read Bool -- Defined in ‘GHC.Read’
 instance Show Bool -- Defined in ‘GHC.Show’
 ```
 #### typeclass declaration, functions of this type class and instances of typeclass
+#### Eq is declared to be a type class with a single type parameter, *a*. Any type which wants to be an instance of Eq must define two functions, (==) and (/=) with the indicated type signatures.
 ```haskell
 λ>:i Eq
 class Eq a where
@@ -20,6 +21,11 @@ class Eq a where
   (/=) :: a -> a -> Bool
 instance (Eq a, Eq b) => Eq (Either a b) -- Defined in ‘Data.Either’
 instance Eq a => Eq [a] -- Defined in ‘GHC.Classes’
+```
+#### *Eq a* is a type class constraint. For any type *a*, as long as *a* is an instance of Eq, (==) can take two values of type *a* and return a Bool.
+```haskell
+λ> :t (==)
+(==) :: Eq a => a -> a -> Bool
 ```
 
 #### A Baz have to be a Foo. Methods in Baz do not override methods in Foo. Typeclass inheritance is additive in nature. The following code cannot compile
