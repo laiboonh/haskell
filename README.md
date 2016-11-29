@@ -73,9 +73,8 @@ Nothing :: Maybe a
 "C:\\Users\\lbh\\haskell"
 ```
 ### Compiling haskell code
-1. `stack ghc -- helloworld.hs -c`
-2. Run helloworld.exe
-3. If your source file has dependencies on other object files they will be linked automatically assuming they are in the same directory
+1. `stack ghc -- Main.hs -o simple` generates the **interface file** .hi and **object file** .o as well as linking the executable "simple"
+2. If your source file has dependencies on other object files they will be linked automatically assuming they are in the same directory
 
 ### Compiling modular haskell files
 1. Assuming you have a Listy.hs and a ListIntances.hs depends on it
