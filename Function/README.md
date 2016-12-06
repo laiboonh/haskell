@@ -1,9 +1,24 @@
 # Function
 ### "Functions are applied to their arguments, and arguments are passed to functions and then evaluated to produce the output"
+1. All functions must take an argument
+2. All functions must return a value
+3. Any time a function is called with the same argument it must return the same value
 
-###Function Composition
+# Referential Transparency
+### Same argument must always produce the same result in any context
 
-#### As long as the types match up we can compose two functions
+# Side Effects
+### If a function did not return a value, then they would have to change some environment state in the program otherwise they would be useless.
+### If they did not take an argument they would have to access a environment one which would mean they are no longer transparent.
+```haskell
+tick()
+if(timeToReset) {
+  reset()
+}
+```
+
+# Function Composition
+### As long as the types match up we can compose two functions
 ```haskell
 λ> :t (.)
 (.) :: (b -> c) -> (a -> b) -> a -> c
