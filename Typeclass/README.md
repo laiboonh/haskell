@@ -1,5 +1,6 @@
 # Typeclasses
 ### "typeclasses allows us to generalize over a set of types in order to define and execute a standard set of features for those types"
+### "typeclasses define a set of functions that can have different implementations depending on the type of data they are given"
 
 #### data declaration and the typeclasses it implements
 ```haskell
@@ -36,7 +37,8 @@ class (Foo a) => Baz a where
   bar :: a -> String
 ```
 
-#### Declaring a type and implementing a typeclass
+## Declaring a type and implementing a typeclass
+#### An instance type of a typeclass is any type that implements the functions defined in the typeclass
 #### info (:i) shows that in order to implement Show one has to minimally implement showsPrec or show method
 ```haskell
 λ> :i Show
